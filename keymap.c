@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
     * |          |          |          |          |          |          |                                     |          |          |    Up    |          |          |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |          |          |    SFT   |          |          |          |----------.               .----------|   Home   |   Left   |   Down   |   Right  |    End   |          |
+    * |          |    SFT   |    Crt   |          |    Alt   |          |----------.               .----------|   Home   |   Left   |   Down   |   Right  |    End   |          |
     * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
     * |          |          |          |          |          |          |----------|               |----------|          |          |          |          |          |          |
     * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NAVIGATE] = LAYOUT(
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,KC_UP     ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-        XXXXXXX   ,XXXXXXX   ,KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      KC_HOME   ,KC_LEFT   ,KC_DOWN   ,KC_RGHT   ,KC_END   ,XXXXXXX   ,
+        XXXXXXX   ,KC_RSFT   ,KC_LCTL   ,XXXXXXX   ,KC_LALT   ,XXXXXXX   ,                                      KC_HOME   ,KC_LEFT   ,KC_DOWN   ,KC_RGHT   ,KC_END   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                  XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                            XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
@@ -87,20 +87,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
     * |          |          |          |          |          |          |                                     |          |          |    M_Up  |          |          |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |          |   Back   |  L_Click |  R_Click |   Next   |          |----------.               .----------|   S_Up   |  M_Left  |  M_Down  |  M_Right |          |          |
+    * |          | R_Click  |  Back    |   Next   | L_Click  |          |----------.               .----------|   S_Up   |  M_Left  |  M_Down  |  M_Right |    CRT   |          |
     * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
     * |          |          |          |          |          |          |----------|               |----------|  S_Left  | S_Right  |          |          |          |          |
     * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
-    *                    |          |          |          |          | /          /                  \  S_Down  \ |    SFT   |    CRT   |          |          |
+    *                    |          |          |          |          | /          /                  \  S_Down  \ |    SFT   |          |          |          |
     *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
     *                    '------------------------------------------------------'                      '------------------------------------------------------'
     */
     [MOUSE] = LAYOUT(
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,KC_MS_U   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-        XXXXXXX   ,KC_BTN4   ,KC_BTN1   ,KC_BTN2   ,KC_BTN5   ,XXXXXXX   ,                                      KC_WH_U   ,KC_MS_L   ,KC_MS_D   ,KC_MS_R   ,XXXXXXX   ,XXXXXXX   ,
+        XXXXXXX   ,KC_BTN2   ,KC_BTN4   ,KC_BTN5   ,KC_BTN1   ,XXXXXXX   ,                                      KC_WH_U   ,KC_MS_L   ,KC_MS_D   ,KC_MS_R   ,KC_LCTL   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                XXXXXXX   ,KC_WH_L   ,KC_WH_R   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-                        XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          KC_WH_D   ,KC_RSFT   ,KC_LCTL   ,XXXXXXX   ,XXXXXXX   
+                        XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          KC_WH_D   ,KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
 
     /* LOL
@@ -179,7 +179,7 @@ static void print_status_narrow(void) {
             oled_write_P(PSTR("Base\n"), false);
             break;
         case NAVIGATE:
-            oled_write_P(PSTR("Navigate\n"), false);
+            oled_write_P(PSTR("Arrow\n"), false);
             break;
         case MATH:
             oled_write_P(PSTR("Math\n"), false);
