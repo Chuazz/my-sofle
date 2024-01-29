@@ -3,7 +3,7 @@
 enum sofle_layers {
     DEFAULT,
     MATH,
-    NAVIGATE,
+    ARROW,
     LOL,
     MOUSE,
     EMPTY,
@@ -21,20 +21,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
     * |          |     Q    |     W    |    E     |    R     |    T     |                                     |     Y    |     U    |     I    |     O    |     P    |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |    Tab   |  SFT-A   |     S    |  GUI-D   |   ALT-F  |    G     |----------.               .----------|     H    |     J    |     K    |     L    | SFT-Del  |     '    |
+    * |    Tab   |  SFT-A   |  Crt-S   |  GUI-D   |   ALT-F  |    G     |----------.               .----------|     H    |     J    |     K    |  Crt-L   | SFT-Del  |     '    |
     * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
     * |    LOL   |     Z    |     X    |    C     |    V     |    B     |----------|               |----------|     N    |     M    |     ,    |     .    |     /    |     `    |
     * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
-    *                    |          |          |MOUSE-Mute| MATH-Esc | / C-Enter  /                  \C_S-Space \ |NAVI-FDel |          |          |          |
+    *                    |          |          |          | MATH-Esc | /Mouse-Ent /                  \ARROW-Spe \ | C_S-FDel |          |          |          |
     *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
     *                    '------------------------------------------------------'                      '------------------------------------------------------'
     */
     [DEFAULT] = LAYOUT(
-        XXXXXXX   ,XXXXXXX    ,XXXXXXX   ,XXXXXXX    ,XXXXXXX    ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX       ,XXXXXXX   ,
-        XXXXXXX   ,KC_Q       ,KC_W      ,KC_E       ,KC_R       ,KC_T      ,                                      KC_Y      ,KC_U      ,KC_I      ,KC_O      ,KC_P          ,XXXXXXX   ,
-        KC_TAB    ,SFT_T(KC_A),KC_S      ,GUI_T(KC_D),ALT_T(KC_F),KC_G      ,                                      KC_H      ,KC_J      ,KC_K      ,KC_L      ,SFT_T(KC_BSPC),KC_QUOT   ,
-        TG(LOL)   ,KC_Z       ,KC_X      ,KC_C       ,KC_V       ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,KC_N      ,KC_M      ,KC_COMMA  ,KC_DOT    ,KC_SLSH       ,KC_GRV    ,
-                    XXXXXXX   ,XXXXXXX   ,LT(MOUSE,KC_MUTE),LT(MATH,KC_ESC),RCTL_T(KC_ENT),                RCS_T(KC_SPC),LT(NAVIGATE,KC_DEL),XXXXXXX   ,XXXXXXX   ,XXXXXXX   
+        KC_MUTE   ,XXXXXXX    ,XXXXXXX     ,XXXXXXX    ,XXXXXXX    ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX     ,XXXXXXX       ,XXXXXXX   ,
+        XXXXXXX   ,KC_Q       ,KC_W        ,KC_E       ,KC_R       ,KC_T      ,                                      KC_Y      ,KC_U      ,KC_I      ,KC_O        ,KC_P          ,XXXXXXX   ,
+        KC_TAB    ,SFT_T(KC_A),RCTL_T(KC_S),GUI_T(KC_D),ALT_T(KC_F),KC_G      ,                                      KC_H      ,KC_J      ,KC_K      ,RCTL_T(KC_L),SFT_T(KC_BSPC),KC_QUOT   ,
+        TG(LOL)   ,KC_Z       ,KC_X      ,KC_C       ,KC_V       ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,KC_N      ,KC_M      ,KC_COMMA  ,KC_DOT      ,KC_SLSH       ,KC_GRV    ,
+                    XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,LT(MATH,KC_ESC),LT(MOUSE, KC_ENT),                LT(ARROW,KC_SPC),RCS_T(KC_DEL),XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
 
     /* MATH
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          RCS_T(KC_SPC),KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
     
-    /* NAVIGATE
+    /* ARROW
     * .-----------------------------------------------------------------.                                     .-----------------------------------------------------------------.
     * |          |          |          |          |          |          |                                     |          |          |          |          |          |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
     *                    '------------------------------------------------------'                      '------------------------------------------------------'
     */
-    [NAVIGATE] = LAYOUT(
+    [ARROW] = LAYOUT(
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,KC_UP     ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
         XXXXXXX   ,KC_RSFT   ,KC_LCTL   ,XXXXXXX   ,KC_LALT   ,XXXXXXX   ,                                      KC_HOME   ,KC_LEFT   ,KC_DOWN   ,KC_RGHT   ,KC_END   ,XXXXXXX   ,
@@ -178,7 +178,7 @@ static void print_status_narrow(void) {
         case DEFAULT:
             oled_write_P(PSTR("Base\n"), false);
             break;
-        case NAVIGATE:
+        case ARROW:
             oled_write_P(PSTR("Arrow\n"), false);
             break;
         case MATH:
