@@ -17,24 +17,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* DEFAULT
     * .-----------------------------------------------------------------.                                     .-----------------------------------------------------------------.
-    * |          |          |          |          |          |          |                                     |          |          |          |          |          |          |
+    * |          |  Zone-1  |  Zone-2  |  Zone-3  |          |          |                                     |          |          |          |          |          |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |          |     Q    |     W    |    E     |    R     |    T     |                                     |     Y    |     U    |     I    |     O    |     P    |          |
+    * | Caps-lock|     Q    |     W    |    E     |    R     |    T     |                                     |     Y    |     U    |     I    |     O    |     P    |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
     * |    Tab   |  SFT-A   |  Crt-S   |  GUI-D   |   ALT-F  |    G     |----------.               .----------|     H    |     J    |     K    |  Crt-L   | SFT-Del  |     '    |
     * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
     * |    LOL   |     Z    |     X    |    C     |    V     |    B     |----------|               |----------|     N    |     M    |     ,    |     .    |     /    |     `    |
     * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
-    *                    |          |          |          | MATH-Esc | /Mouse-Ent /                  \ARROW-Spe \ | C_S-FDel |          |          |          |
+    *                    |          |          |   MOUSE   | MATH-Esc| / Crt-Ent  /                  \ C_S-Spe  \ | Arrow-Del|          |          |          |
     *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
     *                    '------------------------------------------------------'                      '------------------------------------------------------'
     */
     [DEFAULT] = LAYOUT(
-        KC_MUTE   ,XXXXXXX    ,XXXXXXX     ,XXXXXXX    ,XXXXXXX    ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX     ,XXXXXXX       ,XXXXXXX   ,
-        XXXXXXX   ,KC_Q       ,KC_W        ,KC_E       ,KC_R       ,KC_T      ,                                      KC_Y      ,KC_U      ,KC_I      ,KC_O        ,KC_P          ,XXXXXXX   ,
-        KC_TAB    ,SFT_T(KC_A),RCTL_T(KC_S),GUI_T(KC_D),ALT_T(KC_F),KC_G      ,                                      KC_H      ,KC_J      ,KC_K      ,RCTL_T(KC_L),SFT_T(KC_BSPC),KC_QUOT   ,
-        TG(LOL)   ,KC_Z       ,KC_X      ,KC_C       ,KC_V       ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,KC_N      ,KC_M      ,KC_COMMA  ,KC_DOT      ,KC_SLSH       ,KC_GRV    ,
-                    XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,LT(MATH,KC_ESC),LT(MOUSE, KC_ENT),                LT(ARROW,KC_SPC),RCS_T(KC_DEL),XXXXXXX   ,XXXXXXX   ,XXXXXXX   
+        XXXXXXX   ,LCAG(KC_1)  ,LCAG(KC_2)  ,LCAG(KC_3)  ,XXXXXXX    ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX     ,XXXXXXX       ,XXXXXXX   ,
+        KC_CAPS   ,KC_Q        ,KC_W        ,KC_E        ,KC_R       ,KC_T      ,                                      KC_Y      ,KC_U      ,KC_I      ,KC_O        ,KC_P          ,XXXXXXX   ,
+        KC_TAB    ,SFT_T(KC_A) ,RCTL_T(KC_S),GUI_T(KC_D) ,ALT_T(KC_F),KC_G      ,                                      KC_H      ,KC_J      ,KC_K      ,RCTL_T(KC_L),SFT_T(KC_BSPC),KC_QUOT   ,
+        XXXXXXX   ,KC_Z        ,KC_X        ,KC_C        ,KC_V       ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,KC_N      ,KC_M      ,KC_COMMA  ,KC_DOT      ,KC_SLSH       ,KC_GRV    ,
+                    XXXXXXX    ,XXXXXXX   ,MO(MOUSE)  ,LT(MATH, KC_ESC)   ,CTL_T(KC_ENT),                RCS_T(KC_SPC),LT(ARROW,KC_DEL),XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
 
     /* MATH
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX   ,KC_F1     ,KC_F2     ,KC_F3     ,KC_F4     ,KC_F5     ,                                      KC_F6     ,KC_F7     ,KC_F8       ,KC_F9     ,KC_F10    ,KC_F11    ,
         XXXXXXX   ,KC_1      ,KC_2      ,KC_3      ,KC_4      ,KC_5      ,                                      KC_6      ,KC_7      ,KC_8        ,KC_9      ,KC_0      ,KC_F12    ,
         XXXXXXX   ,KC_EXLM   ,KC_AT     ,KC_HASH   ,KC_DOLLAR ,KC_PERC   ,                                      KC_CIRC   ,KC_AMPR   ,KC_ASTR     ,KC_LPRN   ,KC_RPRN   ,KC_PIPE   ,
-        XXXXXXX   ,KC_EQUAL  ,KC_MINUS  ,KC_PLUS   ,KC_LCBR   ,KC_RCBR   ,XXXXXXX   ,                XXXXXXX   ,KC_LBRC   ,KC_RBRC   ,KC_SEMICOLON,KC_COLON  ,KC_BSLS   ,XXXXXXX   ,
+        XXXXXXX   ,KC_EQUAL  ,KC_MINUS  ,((KC_PLUS))   ,KC_LCBR   ,KC_RCBR   ,XXXXXXX   ,                XXXXXXX   ,KC_LBRC   ,KC_RBRC   ,KC_SEMICOLON,KC_COLON  ,KC_BSLS   ,XXXXXXX   ,
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          RCS_T(KC_SPC),KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
     
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [ARROW] = LAYOUT(
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,KC_UP     ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-        XXXXXXX   ,KC_RSFT   ,KC_LCTL   ,XXXXXXX   ,KC_LALT   ,XXXXXXX   ,                                      KC_HOME   ,KC_LEFT   ,KC_DOWN   ,KC_RGHT   ,KC_END   ,XXXXXXX   ,
+        XXXXXXX   ,KC_RSFT   ,KC_LCTL   ,XXXXXXX   ,KC_LALT   ,XXXXXXX   ,                                      KC_HOME   ,KC_LEFT   ,KC_DOWN   ,KC_RGHT   ,KC_END    ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                  XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                            XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
@@ -101,28 +101,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX   ,KC_BTN2   ,KC_BTN4   ,KC_BTN5   ,KC_BTN1   ,XXXXXXX   ,                                      KC_WH_U   ,KC_MS_L   ,KC_MS_D   ,KC_MS_R   ,KC_LCTL   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                XXXXXXX   ,KC_WH_L   ,KC_WH_R   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          KC_WH_D   ,KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
-    ),
-
-    /* LOL
-    * .-----------------------------------------------------------------.                                     .-----------------------------------------------------------------.
-    * |          |          |          |          |          |          |                                     |          |          |          |          |          |          |
-    * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |          |     1    |     2    |     3    |     4    |     5    |                                     |          |          |          |          |          |          |
-    * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |    Tab   |     Q    |     W    |     E    |     R    |     T    |----------.               .----------|          |          |          |          |          |          |
-    * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
-    * |    LOL   |     Z    |          |     D    |     F    |     B    |----------|               |----------|          |          |          |          |          |          |
-    * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
-    *                    |          |          |  Crt-G   |     C    | /Alt-Space /                  \          \ |          |          |          |          |
-    *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
-    *                    '------------------------------------------------------'                      '------------------------------------------------------'
-    */
-    [LOL] = LAYOUT(
-        XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-        XXXXXXX   ,KC_1      ,KC_2      ,KC_3      ,KC_4      ,KC_5      ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-        KC_TAB    ,KC_Q      ,KC_W      ,KC_E      ,KC_R      ,KC_T      ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-        TG(LOL)   ,KC_Z      ,XXXXXXX   ,KC_D      ,KC_F      ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
-                        XXXXXXX   ,XXXXXXX   ,RCTL_T(KC_G),KC_C   ,ALT_T(KC_SPC),                           XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
 
     /* EMPTY
