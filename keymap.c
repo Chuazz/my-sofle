@@ -1,12 +1,13 @@
 #include QMK_KEYBOARD_H
 
 enum sofle_layers {
-    DEFAULT,
+    BASE,
     MATH,
     ARROW,
     LOL,
     MOUSE,
     EMPTY,
+    GAME
 };
 
 // enum custom_keycodes {
@@ -15,25 +16,25 @@ enum sofle_layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    /* DEFAULT
+    /* BASE
     * .-----------------------------------------------------------------.                                     .-----------------------------------------------------------------.
-    * |          |  Zone-1  |  Zone-2  |  Zone-3  |          |          |                                     |          |          |          |          |          |          |
+    * | TG(GAME) |  Zone-1  |  Zone-2  |  Zone-3  |          |          |                                     |          |          |          |          |          |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
     * | Caps-lock|     Q    |     W    |    E     |    R     |    T     |                                     |     Y    |     U    |     I    |     O    |     P    |          |
     * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
-    * |    Tab   |  SFT-A   |  Crt-S   |  GUI-D   |   ALT-F  |    G     |----------.               .----------|     H    |     J    |     K    |  Crt-L   | SFT-Del  |     '    |
-    * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
+    * |    Tab   |  SFT-A   |  Crt-S   |  GUI-D   |   ALT-F  |    G     |----------.               .----------|     H    |     J    |     K    |  Crt-L   |  SFT-BS  |     '    |
+    * |----------+----------+----------+----------+----------+----------|   BOOT   |               |   BOOT   |----------+----------+----------+----------+----------+----------|
     * |    LOL   |     Z    |     X    |    C     |    V     |    B     |----------|               |----------|     N    |     M    |     ,    |     .    |     /    |     `    |
     * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
     *                    |          |          |   MOUSE   | MATH-Esc| / Crt-Ent  /                  \ C_S-Spe  \ | Arrow-Del|          |          |          |
     *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
     *                    '------------------------------------------------------'                      '------------------------------------------------------'
     */
-    [DEFAULT] = LAYOUT(
-        XXXXXXX   ,LCAG(KC_1)  ,LCAG(KC_2)  ,LCAG(KC_3)  ,XXXXXXX    ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX     ,XXXXXXX       ,XXXXXXX   ,
+    [BASE] = LAYOUT(
+        TG(GAME)  ,LCAG(KC_1)  ,LCAG(KC_2)  ,LCAG(KC_3)  ,XXXXXXX    ,XXXXXXX   ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX     ,XXXXXXX       ,XXXXXXX   ,
         KC_CAPS   ,KC_Q        ,KC_W        ,KC_E        ,KC_R       ,KC_T      ,                                      KC_Y      ,KC_U      ,KC_I      ,KC_O        ,KC_P          ,XXXXXXX   ,
-        KC_TAB    ,SFT_T(KC_A) ,RCTL_T(KC_S),GUI_T(KC_D) ,ALT_T(KC_F),KC_G      ,                                      KC_H      ,KC_J      ,KC_K      ,RCTL_T(KC_L),SFT_T(KC_BSPC),KC_QUOT   ,
-        XXXXXXX   ,KC_Z        ,KC_X        ,KC_C        ,KC_V       ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,KC_N      ,KC_M      ,KC_COMMA  ,KC_DOT      ,KC_SLSH       ,KC_GRV    ,
+        KC_TAB    ,SFT_T(KC_A) ,KC_S        ,GUI_T(KC_D) ,ALT_T(KC_F),KC_G      ,                                      KC_H      ,KC_J      ,KC_K      ,KC_L        ,SFT_T(KC_BSPC),KC_QUOT   ,
+        XXXXXXX   ,KC_Z        ,KC_X        ,KC_C        ,KC_V       ,KC_B      , QK_BOOT  ,                 QK_BOOT  ,KC_N      ,KC_M      ,KC_COMMA  ,KC_DOT      ,KC_SLSH       ,KC_GRV    ,
                     XXXXXXX    ,XXXXXXX   ,MO(MOUSE)  ,LT(MATH, KC_ESC)   ,CTL_T(KC_ENT),                RCS_T(KC_SPC),LT(ARROW,KC_DEL),XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
 
@@ -55,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX   ,KC_F1     ,KC_F2     ,KC_F3     ,KC_F4     ,KC_F5     ,                                      KC_F6     ,KC_F7     ,KC_F8       ,KC_F9     ,KC_F10    ,KC_F11    ,
         XXXXXXX   ,KC_1      ,KC_2      ,KC_3      ,KC_4      ,KC_5      ,                                      KC_6      ,KC_7      ,KC_8        ,KC_9      ,KC_0      ,KC_F12    ,
         XXXXXXX   ,KC_EXLM   ,KC_AT     ,KC_HASH   ,KC_DOLLAR ,KC_PERC   ,                                      KC_CIRC   ,KC_AMPR   ,KC_ASTR     ,KC_LPRN   ,KC_RPRN   ,KC_PIPE   ,
-        XXXXXXX   ,KC_EQUAL  ,KC_MINUS  ,((KC_PLUS))   ,KC_LCBR   ,KC_RCBR   ,XXXXXXX   ,                XXXXXXX   ,KC_LBRC   ,KC_RBRC   ,KC_SEMICOLON,KC_COLON  ,KC_BSLS   ,XXXXXXX   ,
+        XXXXXXX   ,KC_EQUAL  ,KC_MINUS  ,KC_PLUS   ,KC_LCBR   ,KC_RCBR   ,XXXXXXX   ,                XXXXXXX   ,KC_LBRC   ,KC_RBRC   ,KC_SEMICOLON,KC_COLON  ,KC_BSLS   ,XXXXXXX   ,
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          RCS_T(KC_SPC),KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
     
@@ -101,6 +102,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX   ,KC_BTN2   ,KC_BTN4   ,KC_BTN5   ,KC_BTN1   ,XXXXXXX   ,                                      KC_WH_U   ,KC_MS_L   ,KC_MS_D   ,KC_MS_R   ,KC_LCTL   ,XXXXXXX   ,
         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                XXXXXXX   ,KC_WH_L   ,KC_WH_R   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
                         XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,                          KC_WH_D   ,KC_RSFT   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
+    ),
+
+    /* GAME
+    * .-----------------------------------------------------------------.                                     .-----------------------------------------------------------------.
+    * | TG(GAME) |    1     |     2    |    3     |     4    |     5    |                                     |          |          |          |          |          |          |
+    * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
+    * |          |    Q     |     W    |    E     |     R    |     T    |                                     |          |          |          |          |          |          |
+    * |----------+----------+----------+----------+----------+----------|                                     |----------+----------+----------+----------+----------+----------|
+    * |   Tab    |    A     |     S    |    D     |     F    |     G    |----------.               .----------|          |          |          |          |          |          |
+    * |----------+----------+----------+----------+----------+----------|          |               |          |----------+----------+----------+----------+----------+----------|
+    * |  Shift   |    Z     |     X    |    C     |     V    |     B    |----------|               |----------|          |          |          |          |          |          |
+    * '-----------------------------------------------------------------/          /                \          \----------------------------------------------------------------'
+    *                    |          |          |          |   BSpace | /  Space   /                  \          \ |          |          |          |          |
+    *                    |          |          |          |          |/          /                    \          \|          |          |          |          |
+    *                    '------------------------------------------------------'                      '------------------------------------------------------'
+    */
+    [GAME] = LAYOUT(
+        TG(GAME)  ,KC_1      ,KC_2      ,KC_3      ,KC_4      ,KC_5      ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
+        XXXXXXX   ,KC_Q      ,KC_W      ,KC_E      ,KC_R      ,KC_T      ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
+        KC_TAB    ,KC_A      ,KC_S      ,KC_D      ,KC_F      ,KC_G      ,                                      XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
+        KC_RSFT   ,KC_Z      ,KC_X      ,KC_C      ,KC_V      ,KC_B      ,XXXXXXX   ,                XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,
+                        XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,KC_BSPC    ,KC_SPC    ,                          XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   ,XXXXXXX   
     ),
 
     /* EMPTY
@@ -153,7 +176,7 @@ static void print_status_narrow(void) {
     // Print current layer
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
-        case DEFAULT:
+        case BASE:
             oled_write_P(PSTR("Base\n"), false);
             break;
         case ARROW:
@@ -167,6 +190,9 @@ static void print_status_narrow(void) {
             break;
         case MOUSE:
             oled_write_P(PSTR("Mouse\n"), false);
+            break;
+        case GAME:
+            oled_write_P(PSTR("Game\n"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
